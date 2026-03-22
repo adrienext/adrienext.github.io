@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:vercel.com)",
+      "WebFetch(domain:www.freetiers.com)",
+      "WebFetch(domain:www.netlify.com)",
+      "WebFetch(domain:render.com)",
+      "Bash(git init:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}

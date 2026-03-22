@@ -1,0 +1,19 @@
+body.dark  {
+    color: #d8dee9;
+}
+
+body.dark, .dark header, .dark .navbar {
+    background: linear-gradient(to right, #2e3440, #4c566a);
+}
+
+.dark article, .dark #form {
+    background-color: #4c566a;
+}
+
+.dark main > :nth-child(even) {
+    background-color:  #2e3440;
+}
+
+.dark main > :nth-child(odd) {
+    background-color: #292E39;
+}

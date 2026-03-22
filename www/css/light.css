@@ -1,0 +1,20 @@
+body.light {
+    color:#2e3440;
+}
+
+body.light, .light header, .light .navbar {
+    background: linear-gradient(to right, #d8dee9, #eceff4);
+}
+
+.light article, .light #form {
+    background-color:#5e81ac;
+    color:  #eceff4;
+}
+
+.light main > :nth-child(even) {
+    background-color:  #d8dee9;
+}
+
+.light main > :nth-child(odd) {
+    background-color:  #eceff4;
+}

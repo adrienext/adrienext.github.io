@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Amberto Adrien"/>
+    <meta name="description" content="My personal website"/>
+    <meta name="keywords" content="Amberto, Adrien, GBM, Polytech, Marseille, engineer, biomedical, research, internship"/>
+    <meta property="og:image" content="img/pdp.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- <link rel=”alternate” hreflang=”en” href=”http://de.example.com/” /> -->
+    <link rel="apple-touch-icon" href="/img/icon/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png"/>
+    <link rel="shortcut icon" href="/img/icon/favicon.ico"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/dark.css"/>
+    <link rel="stylesheet" href="css/light.css"/>
+    <script defer src="js/script.js"></script>
+    
+    <title>Amberto Adrien</title>
+</head>
+<body class="light">
+    <header>
+        <h1>🧠 Welcome 👨‍⚕️</h1>
+        <img id="slider" class="pdp" src="img/pdp/pdp1.png" alt="profile picture"/>
+    </header>
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li><input type="checkbox" name="theme" id="checkbox"/>
+                <label for="checkbox" class="label">
+                    <i class="icone moon">&#x263E;</i>
+                    <i class="icone sun">&#x2600;</i>
+                    <span class="ball"></span>
+                </label>
+            </li>
+            <li><a href="#home" class="nav-item active">HOME</a></li>
+            <li><a href="#resume" class="nav-item">CV</a></li>
+            <li><a href="#project" class="nav-item">PROJECTS</a></li>
+            <li><a href="#misc" class="nav-item">MISC</a></li>
+            <li><a href="#contact" class="nav-item">CONTACT</a></li>
+            <!-- <li class="nav-item">langue</li> -->
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Information</h2>
+            <div class="grid">
+                <article>
+                    <h3>Presentation</h3>
+                    <p>Hi I'm Adrien, a 4th year Biomedical Engineer student at <i>École Polytechnique Universitaire de Marseille</i>. Before joining this school I went to medical school for one year and then did Polytech two-year integrated preparatory cycle.</p>
+                </article>
+                <article>
+                    <h3>Website</h3>
+                    <p>This website is a project I did for my web course. I hope you'll like it !</p>
+                </article>
+                <article>
+                    <h3>Contact information</h3>
+                    <address>
+                        Amberto Adrien<br/>
+                        16 avenue Maguy Barbaroux<br/>
+                        13400, Aubagne<br/>
+                        France<br/>
+                        <a href="mailto:adrien.amberto@etu.univ-amu.fr">adrien.amberto@etu.univ-amu.fr</a><br/>
+                        <a href="tel:+33664729710">06.64.72.97.10</a>
+                    </address>
+                </article>
+            </div>
+        </section>
+        
+        <section id="resume">
+            <h2>Curriculum vitae</h2>
+            <object class="pdf" data="doc/cv/English_resume_AMBERTO_V2.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0" type="application/pdf" name="resume">
+                <p>Your web browser doesn't support pdf file. Please download it by taping on the image.<br/>
+                    <a href="doc/cv/English_resume_AMBERTO_V2.pdf"><img src="img/misc/logo_pdf.png" alt="resume_amberto.pdf"></a>
+                </p>
+            </object>
+        </section>
+
+        <section id="project">
+            <h2>My projects</h2>
+            <div class="grid">
+                <article>
+                    <h3>ECG</h3>
+                    <a href="doc/projet/projet labview.zip" download="ECG label.zip"><figure>
+                        <img src="img/project/ECG.gif" alt="ECG animation"/></a>
+                        <figcaption>WIP<br/>Made with Labview</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h3>C language</h3>
+                    <a href="doc/projet/khana.c" download="bridgit.c"><figure>
+                        <img src="img/project/bridgit.gif" alt="bridgit"/></a>
+                        <figcaption>Game of bridgit playable in terminal<br/>Used graph theory and linked list</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section id="misc">
+            <h2>Links</h2>
+            <div class="grid">
+                <article>
+                    <h3>My Education</h3>
+                    <figure>
+                        <a href="http://fr.ap-hm.fr/presentation-ap-hm-anglais" target="_blank"><img src="img/formation/logo_med.png" alt="medicine logo"/></a>
+                        <figcaption>Medical School</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://polytech.univ-amu.fr/formations/cycle-preparatoire" target="_blank"><img src="img/formation/logo_poly.png" alt="school logo"/></a>
+                        <figcaption>Polytech two-year integrated preparatory cycle</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://polytech.univ-amu.fr/sites/polytech.univ-amu.fr/files/
+                        english/gbm_2016-2017_english.pdf" target="_blank"><img src="img/formation/logo_gbm.png" alt="master logo"/></a>
+                        <figcaption>Biomedical Engineering</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h3>Hobbies</h3>
+                    <figure>
+                        <a href="http://www.ouverture-facile.com/enigmes/index.html" target="_blank"><img src="img/hobbies/of.png" alt="logo OF"/></a>
+                        <figcaption>Riddle</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://www.codingame.com/start" target="_blank"><img src="img/hobbies/coding.png" alt="logo Codingame"/></a>
+                        <figcaption>Challenge</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://polytech.univ-amu.fr/news/5071/retour-1ere-edition-du-massilia-solar-cooking-contest" target="_blank"><img src="img/hobbies/miam.png" alt="logo food"/></a>
+                        <figcaption>Cooking</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Feel free to contact me !</h2>
+            <form id="form" action="mailto:adrien.amberto@etu.univ-amu.fr?content-type=text/html&amp;subject=Website" method="post" enctype="application/x-www-form-urlencoded">
+                <p>
+                    <label for="prenom">First-name * </label><input id="prenom" type="text" name="prenom" value=""/><br/>
+                    <label for="nom">Last-name * </label><input id="nom" type="text" name="nom" value=""/><br/>
+                    <input id="sexeHomme" type="radio" name="sexe" value="homme"/><label for="sexeHomme">Male</label> 
+                    <input id="sexeFemme" type="radio" name="sexe" value="femme"/><label for="sexeFemme">Female</label><br/>
+                    <textarea id="impression" name="impression" rows="5" cols="50"></textarea><br/>
+                    <input id="effacer" type="button" value="Erase"/><input type="submit" value="Send"/> * : Required fields.<br/>
+                    <span id="message"></span>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <a id="logo" href="https://polytech.univ-amu.fr/" target="_blank">
+            <picture>
+                <source media="(min-width:725px)" srcset="img/formation/logo_polytech.png"/>
+                <img src="img/formation/logo_poly.png" alt="logo polytech"/>
+            </picture>
+        </a>
+        <p id="copyright">
+            © Copyright 2021-2022<br/>
+            <a href="#" class="grand"><i class="icone">&#x1F899;</i> Back to top</a>
+        </p>
+        <a id="val_html" href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fkirikou.alwaysdata.net%2F" target="_blank"><img src="img/misc/valid-html.png" alt="w3c valid-html"/></a>
+        <a id="val_css" href="https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fkirikou.alwaysdata.net%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=fr" target="_blank"><img src="img/misc/valid-css.png" alt="w3c valid-css"/></a>
+    </footer>
+</body>
+</html>
