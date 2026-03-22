@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Medical cross -->
+  <path d="M24 4 L40 4 L40 24 L60 24 L60 40 L40 40 L40 60 L24 60 L24 40 L4 40 L4 24 L24 24 Z" fill="#bf616a" opacity="0.85"/>
+  <!-- DNA double helix -->
+  <path d="M22 8 C30 16, 30 20, 22 28 C30 36, 30 40, 22 48 C30 56, 30 58, 26 62" fill="none" stroke="#eceff4" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M42 8 C34 16, 34 20, 42 28 C34 36, 34 40, 42 48 C34 56, 34 58, 38 62" fill="none" stroke="#eceff4" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Rungs -->
+  <line x1="26" y1="12" x2="38" y2="12" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="24" y1="20" x2="40" y2="20" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="26" y1="28" x2="38" y2="28" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="24" y1="36" x2="40" y2="36" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="26" y1="44" x2="38" y2="44" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="24" y1="52" x2="40" y2="52" stroke="#eceff4" stroke-width="1.5" opacity="0.7"/>
+</svg>

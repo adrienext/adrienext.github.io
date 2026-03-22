@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#2e3440"/>
+  <!-- Gear with proper teeth -->
+  <path d="M30 6 L34 6 L35.2 11.5 C37 12 38.6 12.8 40 13.8 L45 11 L48 14 L45.2 19 C46.2 20.4 47 22 47.5 23.8 L53 25 L53 29 L47.5 30.2 C47 32 46.2 33.6 45.2 35 L48 40 L45 43 L40 40.2 C38.6 41.2 37 42 35.2 42.5 L34 48 L30 48 L28.8 42.5 C27 42 25.4 41.2 24 40.2 L19 43 L16 40 L18.8 35 C17.8 33.6 17 32 16.5 30.2 L11 29 L11 25 L16.5 23.8 C17 22 17.8 20.4 18.8 19 L16 14 L19 11 L24 13.8 C25.4 12.8 27 12 28.8 11.5 Z" fill="#434c5e"/>
+  <circle cx="32" cy="27" r="12" fill="#2e3440"/>
+  <!-- ECG pulse -->
+  <polyline points="14,33 24,33 27,21 31,42 35,27 38,36 41,33 52,33" fill="none" stroke="#bf616a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

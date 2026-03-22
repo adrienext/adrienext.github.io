@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Heart -->
+  <path d="M32 18 C28 10, 14 10, 14 22 C14 34, 32 50, 32 50 C32 50, 50 34, 50 22 C50 10, 36 10, 32 18Z" fill="#bf616a" stroke="#2e3440" stroke-width="1"/>
+  <!-- ECG pulse cutting through -->
+  <polyline points="8,30 20,30 24,18 29,40 34,24 38,34 42,30 56,30" fill="none" stroke="#eceff4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
