@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static personal portfolio website for Adrien Amberto. No build system, framework, or package manager — pure HTML/CSS/JS. Previously hosted at `kirikou.alwaysdata.net` (now inactive).
+Static bilingual (EN/FR) personal portfolio for Adrien Amberto. No build system or package manager — pure HTML/CSS/JS. Target deployment: GitHub Pages.
 
 ## Development
 
@@ -14,26 +14,26 @@ cd www && python -m http.server
 ```
 No build, install, or test steps.
 
-## Repository Layout
-
-- **`www/`** — current site (English, 2021-2022 version, most complete)
-- **`www/fr/`** — older French translation, shares parent's CSS/JS/images via `../` paths
-- **`backup site/`** — archived French snapshot (2020-2021), has a unique `pdp.mp4` video not in `www/`
-
 ## Architecture
 
-### CSS Theme System (3 files)
+### File structure
+- `www/index.html` — English (default)
+- `www/fr/index.html` — French (all asset paths use `../` prefix)
+- `www/css/` — `style.css` (layout + responsive), `dark.css`, `light.css` (theme colors)
+- `www/js/script.js` — theme, hamburger menu, scrollspy, slideshow
+- `www/img/`, `www/doc/` — shared assets for both languages
 
-`style.css` handles layout. `dark.css` and `light.css` define color schemes applied via body class (`.dark` / `.light`). Uses Nord palette (`#2e3440`, `#d8dee9`, `#5e81ac`, etc.). Theme toggle is a hidden checkbox (`#checkbox`) — JS swaps the body class and persists to `localStorage`.
+### CSS theme system
+Three stylesheets: `style.css` for layout, `dark.css` and `light.css` for colors via body class `.dark`/`.light`. Nord palette. Theme toggle is a hidden checkbox; JS swaps body class and persists to `localStorage`. Also detects `prefers-color-scheme` on first visit.
 
-### JavaScript (single file: `js/script.js`)
+### JavaScript (`js/script.js`)
+- **Theme toggle** — localStorage + OS preference detection
+- **Hamburger menu** — toggles `.open` class on `.navbar-nav`
+- **Scrollspy** — IntersectionObserver, works with any section IDs (both EN/FR)
+- **Slideshow** — detects path prefix from stylesheet href to work from both root and `/fr/`
 
-Four features in one file:
-1. **Theme toggle** — `localStorage('theme')`, swaps body class
-2. **Scrollspy** — scroll listener sets `.active` on nav links by section offset
-3. **Form validation** — validates name fields (3-12 chars) and textarea (3-150 chars), highlights errors
-4. **Profile slideshow** — cycles `img/pdp/pdp1-4.png` with fade transition every 7s
+### Responsive
+Media queries at 768px (hamburger nav, stacked footer, smaller images) and 480px (tighter spacing). Content grid uses `repeat(auto-fit, minmax(clamp(...), 1fr))` for fluid columns.
 
-### Responsive Grid
-
-Content grid uses `repeat(auto-fit, minmax(clamp(...), 1fr))` — reflows without media queries. Footer uses named CSS Grid areas.
+### Bilingual setup
+Two separate HTML files sharing all CSS/JS/assets. Language switcher in navbar. French version prefixes asset paths with `../`. The JS `<html lang>` attribute can be used to detect current language if needed.

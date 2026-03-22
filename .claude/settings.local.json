@@ -9,7 +9,8 @@
       "WebFetch(domain:www.netlify.com)",
       "WebFetch(domain:render.com)",
       "Bash(git init:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(cd:*)"
     ]
   }
 }

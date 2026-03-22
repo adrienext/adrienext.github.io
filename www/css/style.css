@@ -22,8 +22,8 @@ a {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    max-width: 100%;
+    height: auto;
     transition: transform 500ms ease-out;
 }
 
@@ -58,13 +58,12 @@ header {
 }
 
 #slider {
-    opacity:1;
-    transition: opacity 1.5s; 
+    opacity: 1;
+    transition: opacity 1.5s;
 }
 
-
 #slider.fadeOut {
-    opacity:0;
+    opacity: 0;
 }
 /***************************************/
 
@@ -80,6 +79,7 @@ ul {
     top: 0;
     height: 70px;
     width: 100%;
+    z-index: 99;
 }
 
 .navbar-nav {
@@ -100,6 +100,54 @@ ul {
 
 .active {
     border-bottom: 4px solid #bf616a;
+}
+
+.lang-dropdown {
+    position: relative;
+    padding: 20px 40px;
+    margin: -20px -40px;
+}
+
+.lang-btn {
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px;
+    line-height: 1;
+}
+
+.lang-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: #eceff4;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    padding: 4px 0;
+    min-width: 120px;
+    z-index: 200;
+}
+
+.dark .lang-menu {
+    background: #3b4252;
+}
+
+.lang-dropdown:hover .lang-menu {
+    display: block;
+}
+
+.lang-menu li {
+    padding: 6px 12px;
+}
+
+.lang-menu a:hover {
+    text-decoration: underline;
+    border-bottom: none;
+}
+
+.lang-current {
+    opacity: 0.5;
 }
 
 /**************** Bouton ***************/
@@ -137,7 +185,7 @@ ul {
     left: 2px;
     height: 22px;
     width: 22px;
-    transition : transform 0.2s linear;
+    transition: transform 0.2s linear;
 }
 
 #checkbox:checked + .label .ball {
@@ -153,6 +201,25 @@ ul {
 }
 
 /***************************************/
+
+/*************** Hamburger Menu ***************/
+.hamburger {
+    display: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: currentColor;
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s;
+}
 /***************************************/
 
 /***************** Main ****************/
@@ -166,12 +233,6 @@ h2 {
 }
 
 section {
-    /* min-height: 100vh; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-
     padding: 1.35rem;
 }
 
@@ -191,79 +252,169 @@ article {
     overflow: hidden;
 }
 
-#resume, #contact{
+#resume {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.pdf {
-    width: 60%;
-    height: 1000px;
+/************* CV Card *****************/
+.cv-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
 }
+
+.cv-icon {
+    width: 64px;
+    height: 64px;
+}
+
+.cv-download-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #5e81ac;
+    color: #eceff4 !important;
+    border-radius: 5px;
+    text-decoration: none !important;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cv-download-btn:hover {
+    background-color: #81a1c1;
+    transform: none;
+}
+/***************************************/
 
 #project img {
     height: 200px;
     width: auto;
 }
 
-#form {
-    max-width: 100%;
-    border: 3px double #a3be8c;
-    border-radius: 5px;
-    padding: 1rem;
+#misc img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
-textarea {
-    max-width: 100%;
+.text-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background-color: #5e81ac;
+    color: #eceff4;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.text-logo:hover {
+    transform: scale(1.1);
 }
 /***************************************/
 
 /*************** Footer ****************/
 footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-    "logo texte val_html"
-    "logo texte val_css";
-
     padding: 2em;
-}
-
-#logo {
-    grid-area: logo;
-    justify-self: start;
-    align-self: center;
-}
-
-#copyright {
-    grid-area: texte;
-    justify-self: center;
-    align-self: center;
     text-align: center;
 }
 
-#val_html { 
-    grid-area: val_html;
-    justify-self: end;
-    align-self: center;
+#copyright {
+    margin: 0;
+}
+/***************************************/
+
+/************* Responsive **************/
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    .navbar {
+        height: auto;
+        min-height: 50px;
+        position: sticky;
+        top: 0;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        display: none;
+    }
+
+    .navbar-nav.open {
+        display: flex;
+    }
+
+    .navbar-nav li {
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    .navbar-nav a {
+        padding-bottom: 5px;
+    }
+
+    .navbar-nav li:first-child {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .cv-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pdp {
+        width: 150px;
+        height: 150px;
+    }
+
+    header {
+        min-height: 300px;
+        padding-bottom: 2em;
+    }
+
+    #project img {
+        height: 150px;
+    }
 }
 
-#val_css {
-    grid-area: val_css;
-    justify-self: end;
-    align-self: center;
-}
+@media (max-width: 480px) {
+    body {
+        font-size: 14px !important;
+    }
 
-footer img {
-    width: unset;
-    height: unset;
-}
+    .pdp {
+        width: 120px;
+        height: 120px;
+    }
 
-footer img:hover {
-    transform: none;
+    header {
+        min-height: 250px;
+    }
+
+    section {
+        padding: 1rem 0.75rem;
+    }
+
+    #project img {
+        height: 120px;
+        width: auto;
+    }
 }
 /***************************************/

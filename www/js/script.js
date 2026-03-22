@@ -1,196 +1,91 @@
-/**** Gestion theme avec sauvegarde ****/
+'use strict';
+
+/* ---- Theme toggle with OS preference detection ---- */
 const checkbox = document.getElementById('checkbox');
 const body = document.body;
 
 let theme = localStorage.getItem('theme');
-
-if (theme == null) {
-	localStorage.setItem('theme', body.className);
-	theme = body.className;
-} else {
-	body.className = theme;
-	if (theme == 'dark') {
-		checkbox.checked = true;
-	}
+if (!theme) {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
+body.className = theme;
+checkbox.checked = (theme === 'dark');
 
 checkbox.addEventListener('change', () => {
-	if (theme == 'dark') {
-		theme = 'light';
-		body.classList.replace('dark', 'light');
-		localStorage.setItem('theme', 'light');
-	} else {
-		theme = 'dark';
-		body.classList.replace('light', 'dark');
-  		localStorage.setItem('theme', 'dark');
-	}
+    theme = (theme === 'dark') ? 'light' : 'dark';
+    body.className = theme;
+    localStorage.setItem('theme', theme);
 });
 
-/************** Scrollspy **************/
+/* ---- Mobile hamburger menu ---- */
+const hamburger = document.querySelector('.hamburger');
+const navList = document.querySelector('.navbar-nav');
 
-const home = document.querySelector("#home");
-const resume = document.querySelector("#resume");
-const project = document.querySelector("#project");
-const misc = document.querySelector("#misc");
-const contact = document.querySelector("#contact");
-const caca = 500;
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        const isOpen = navList.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
 
-window.addEventListener("scroll", () => {
-  var windo = window.pageYOffset;
-  //console.log(windo)
-  if(resume.offsetTop <= windo && project.offsetTop > windo) {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("[href='#resume']").classList.add("active");
-  }
-  else if(project.offsetTop <= windo && misc.offsetTop > windo) {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("[href='#project']").classList.add("active");
-  }
-  else if(misc.offsetTop <= windo && contact.offsetTop > windo) {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("[href='#misc']").classList.add("active");
-  }
-  else if(contact.offsetTop <= windo+caca) {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("[href='#contact']").classList.add("active");
-  }
-  else {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector("[href='#home']").classList.add("active");
-  }
-})
-
-
-/*
- * Gestion de formulaire
- * @author Mickael Martin Nevot
- */
-
-const CONSIGNES_IMPRESSION = "Give your impression about this website, or contact me for anything.";
- 
-window.onload = loadJS;
-
-function addEvent(element, event, func) {
-	if (element.addEventListener) {
-		element.addEventListener(event, func, false);
-	} else {
-		element.attachEvent("on" + event, func);
-	}
+    navList.querySelectorAll('.nav-item').forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
 }
 
-function surligne(champ, erreur) {
-	if(erreur) {
-		champ.style.backgroundColor = "#fba";
-	} else {
-		champ.style.backgroundColor = "";
-	}
-}
+/* ---- Scrollspy using IntersectionObserver ---- */
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.navbar-nav a.nav-item:not(.lang-switch)');
 
-function blurNom(event) {
-	return verifNom(event.target);
-}
+const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -75% 0px',
+    threshold: 0
+};
 
-function verifNom(champ) {
-	var erreur = false;
-	
-	if(champ.value.length < 3 || champ.value.length > 12) {
-		erreur = true;
-	}
-	
-	surligne(champ, erreur);
-	return !erreur;
-}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(
+                `.navbar-nav a[href="#${entry.target.id}"]`
+            );
+            if (activeLink) activeLink.classList.add('active');
+        }
+    });
+}, observerOptions);
 
-function focusImpression(event) {
-	var impression = document.getElementById("impression");
-	
-	if (impression.value == CONSIGNES_IMPRESSION) {
-		impression.value = "";
-	}
-}
+sections.forEach(section => observer.observe(section));
 
-function blurImpression(event) {
-	return verifImpression();
-}
+/* ---- Profile picture slideshow ---- */
+(function () {
+    const slider = document.getElementById('slider');
+    if (!slider) return;
 
-function verifImpression() {
-	var impression = document.getElementById("impression");
-	var erreur = false;
-	
-	if(impression.value.length < 3 || impression.value.length > 150 || impression.value == CONSIGNES_IMPRESSION) {
-		erreur = true;
-	}
-	
-	if (impression.value == "") {
-		impression.value = CONSIGNES_IMPRESSION;
-	}
-	
-	surligne(impression, erreur);
-	return !erreur;
-}
+    const styleLink = document.querySelector('link[rel="stylesheet"][href*="style.css"]');
+    const prefix = styleLink ? styleLink.getAttribute('href').replace('css/style.css', '') : '';
 
-function effacerForm(event) {
-	var impression = document.getElementById("impression");
-	
-	impression.value = CONSIGNES_IMPRESSION;
-	
-	verifImpression();
-}
+    const images = [
+        prefix + 'img/pdp/pdp1.png',
+        prefix + 'img/pdp/pdp2.png',
+        prefix + 'img/pdp/pdp3.png',
+        prefix + 'img/pdp/pdp4.png'
+    ];
+    const duration = 7000;
+    let index = 0;
 
-function verifForm(event) {
-	var prenom = document.getElementById("prenom");
-	var nom = document.getElementById("nom");
-	var impression = document.getElementById("impression");
-	var message = document.getElementById("message");
-	
-	var prenomOk = verifNom(prenom);
-	var nomOk = verifNom(nom);
-	var impressionOk = verifImpression(impression);
-	
-	if(prenomOk && nomOk && impressionOk) {
-		message.innerHTML = "Message en cours d'envoi";
-		return true;
-	} else {
-		event.preventDefault();
-		message.innerHTML = "Veuillez remplir correctement tous les champs";
-		return false;
-	}
-}
+    images.forEach(src => { new Image().src = src; });
 
-function loadJS() {
-	var prenom = document.getElementById("prenom");
-	var nom = document.getElementById("nom");
-	var impression = document.getElementById("impression");
-	var effacer = document.getElementById("effacer");
-	var form = document.getElementById("form");
-	
-	impression.value = CONSIGNES_IMPRESSION;
-	
-	addEvent(prenom, "blur", blurNom);
-	addEvent(nom, "blur", blurNom);
-	addEvent(impression, "focus", focusImpression);
-	addEvent(impression, "blur", blurImpression);
-	addEvent(effacer, "click", effacerForm);
-	addEvent(form, "submit", verifForm);
-}
+    function cycle() {
+        slider.classList.add('fadeOut');
+        setTimeout(() => {
+            index = (index + 1) % images.length;
+            slider.src = images[index];
+            slider.classList.remove('fadeOut');
+        }, 1500);
+    }
 
-/* slideshow */
-const imgArray = [
-    '/img/pdp/pdp1.png',
-	'/img/pdp/pdp2.png',
-	'/img/pdp/pdp3.png',
-    '/img/pdp/pdp4.png'],
-    imgDuration = 7000;
-let curIndex = 0;
-
-function slideShow() {
-    document.getElementById('slider').className += " fadeOut";
-    setTimeout(function() {
-        document.getElementById('slider').src = imgArray[curIndex];
-        document.getElementById('slider').className = "pdp";
-    },1500);
-    curIndex++;
-    if (curIndex == imgArray.length) { curIndex = 0; }
-    setTimeout(slideShow, imgDuration);
-}
-slideShow();
+    setInterval(cycle, duration);
+})();
